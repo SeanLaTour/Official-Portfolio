@@ -32,7 +32,7 @@ export const PortfolioTextNav: React.FC<PortfolioTextProps> = (props) => {
 export const PortfolioTextStandard: React.FC<PortfolioTextProps> = (props) => {
   return (
     <Text
-      lineHeight="200%"
+      lineHeight="230%"
       color="black"
       fontSize="1rem"
       fontFamily="RockSalt"
