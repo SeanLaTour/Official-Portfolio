@@ -1,7 +1,7 @@
 import { Box, Image, VStack } from "@chakra-ui/react";
 import React from "react";
 import BackgroundImage from "../../images/paintstrokebackgroundleft.webp";
-import ProfilePhotoTwo from "../../images/seanprofilepagephoto3-.png";
+import ProfilePhotoTwo from "../../images/seanprofilepagephoto2.png";
 import {
   PortfolioTextStandard,
   PortfolioTextSubTitle,
