@@ -7,7 +7,7 @@ import {
   PortfolioTextSubTitle,
   PortfolioTextTitle,
 } from "../shared/portfolio_text";
- 
+
 const Projects: React.FC = (props) => {
   return (
     <Box
@@ -18,14 +18,7 @@ const Projects: React.FC = (props) => {
       height="100vh"
       paddingTop="6rem"
       paddingLeft="2rem"
-    >
-      <Image
-        src={PaintStrokeImage}
-        style={{transform: "rotate(20deg)"}}
-        
-      />{" "}
-     
-    </Box>
+    ></Box>
   );
 };
 
