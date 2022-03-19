@@ -1,7 +1,7 @@
-import BackgroundImage from "../../images/paintstrokebackground.webp";
+import BackgroundImage from "../../images/laptop.png";
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import PaintSplashImage from "../../images/paintspray.png";
+import LaptopImage from "../../images/laptop.png";
 import {
   PortfolioTextSubTitle,
   PortfolioTextTitle,
@@ -12,8 +12,8 @@ const Projects: React.FC = (props) => {
     <Box
       backgroundImage={BackgroundImage}
       backgroundRepeat="no-repeat"
-      backgroundPosition="right"
-      backgroundSize="auto 100%"
+      backgroundPosition="left bottom 20px"
+      backgroundSize="70% 80%"
       height="100vh"
       paddingTop="6rem"
       paddingLeft="2rem"
