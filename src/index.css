@@ -3,3 +3,10 @@
   src: local("RockSalt-Regular"),
     url(../src/fonts/RockSalt-Regular.ttf) format("truetype");
 }
+
+h1,
+h2,
+h3,
+p {
+  font-family: RockSalt;
+}

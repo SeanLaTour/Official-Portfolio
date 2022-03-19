@@ -28,3 +28,17 @@ export const PortfolioTextNav: React.FC<PortfolioTextProps> = (props) => {
     </Text>
   );
 };
+
+export const PortfolioTextStandard: React.FC<PortfolioTextProps> = (props) => {
+  return (
+    <Text
+      lineHeight="200%"
+      color="black"
+      fontSize="1rem"
+      fontFamily="RockSalt"
+      {...props}
+    >
+      {props.children}
+    </Text>
+  );
+};
