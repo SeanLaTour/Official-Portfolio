@@ -1,12 +1,13 @@
 import BackgroundImage from "../../images/laptop.png";
-import { Box } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import React from "react";
-import LaptopImage from "../../images/laptop.png";
+import PaintStrokeImage from "../../images/paintstrokebackgroundright.png";
 import {
+  PortfolioTextStandard,
   PortfolioTextSubTitle,
   PortfolioTextTitle,
 } from "../shared/portfolio_text";
-
+ 
 const Projects: React.FC = (props) => {
   return (
     <Box
@@ -17,7 +18,14 @@ const Projects: React.FC = (props) => {
       height="100vh"
       paddingTop="6rem"
       paddingLeft="2rem"
-    ></Box>
+    >
+      <Image
+        src={PaintStrokeImage}
+        style={{transform: "rotate(20deg)"}}
+        
+      />{" "}
+     
+    </Box>
   );
 };
 
