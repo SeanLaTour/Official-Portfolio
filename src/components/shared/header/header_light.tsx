@@ -14,6 +14,7 @@ const HeaderLight: React.FC<HeaderLightProps> = (props) => {
       backgroundImage={`linear-gradient(to bottom, rgb(0,0,0, 1) 0%, rgb(275,275,275, 0) 10%)`}
       position="fixed"
       padding="2rem"
+      zIndex="2"
     >
       <HStack>
         <PortfolioTextNav

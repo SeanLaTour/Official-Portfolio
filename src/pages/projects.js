@@ -1,14 +1,14 @@
 import * as React from "react";
 import { ChakraProvider } from "@chakra-ui/provider";
 import "../index.css";
-import Header from "../components/shared/header/header";
+import HeaderLight from "../components/shared/header/header_light";
 import Projects from "../components/projects/projects";
 
 // markup
 const ProjectsPage = () => {
   return (
     <ChakraProvider>
-      <Header />
+      <HeaderLight />
       <Projects />
     </ChakraProvider>
   );

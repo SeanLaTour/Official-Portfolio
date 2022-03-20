@@ -4,6 +4,12 @@
     url(../src/fonts/RockSalt-Regular.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "Wallpoet";
+  src: local("Wallpoet-Regular"),
+    url(../src/fonts/Wallpoet-Regular.ttf) format("truetype");
+}
+
 h1,
 h2,
 h3,
