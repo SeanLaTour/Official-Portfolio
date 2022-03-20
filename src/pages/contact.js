@@ -1,16 +1,15 @@
 import * as React from "react";
 import { ChakraProvider } from "@chakra-ui/provider";
 import "../index.css";
-import LandingPage from "../components/landing_page/landing_page";
-import Header from "../components/shared/header/header";
-import About from "../components/about/about";
+import HeaderLight from "../components/shared/header/header_light";
+import Contact from "../components/contact/contact";
 
 // markup
 const ContactPage = () => {
   return (
     <ChakraProvider>
-      <Header />
-      <About />
+      <HeaderLight />
+      <Contact />
     </ChakraProvider>
   );
 };

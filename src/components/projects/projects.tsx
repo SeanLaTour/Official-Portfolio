@@ -21,7 +21,7 @@ const Projects: React.FC = (props) => {
         width="140vw"
         src={BackgroundTop}
       />
-            <Image
+      <Image
         transform={"rotate(60deg)"}
         position="fixed"
         right="-30%"

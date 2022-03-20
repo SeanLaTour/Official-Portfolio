@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { Box, HStack, Text } from "@chakra-ui/react";
 import { PortfolioTextNav } from "../portfolio_text";
 import { navigate } from "gatsby";
