@@ -30,45 +30,34 @@ const Contact: React.FC = (props) => {
       paddingTop="6rem"
       paddingLeft="2rem"
     >
-        <Box>
-            <PortfolioTextTitle marginLeft="2rem" paddingTop="1rem" color="white">
-                -Contact Me
-            </PortfolioTextTitle>
-
-               
-                <form className="contact-form" 
-                onSubmit={sendEmail}
-                >
-                     <Box marginTop="2rem" marginLeft="2rem" width="35%">
-      <Input focusBorderColor="white" color="white" type="hidden" name="contact_number" />
-           
-      <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
+      <Box>
+        <PortfolioTextTitle marginLeft="2rem" paddingTop="0rem" color="white">
+          -Contact Me
+        </PortfolioTextTitle>
+          <form className="contact-form" onSubmit={sendEmail}>
+            <Box marginTop="1rem" marginLeft="2rem" width="35%">
+              <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
                 Name
-            </PortfolioTextStandard>
-      <Input focusBorderColor="white" color="white" type="text" name="from_name" />
-           
-      <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
+              </PortfolioTextStandard>
+              <Input focusBorderColor="white" color="white" type="text" name="from_name" />
+              <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
                 Email
-            </PortfolioTextStandard>
-      <Input focusBorderColor="white" color="white" type="email" name="from_email" />
-          
-      <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
+              </PortfolioTextStandard>
+              <Input focusBorderColor="white" color="white" type="email" name="from_email" />
+              <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
                 Subject
-            </PortfolioTextStandard>
-      <Input focusBorderColor="white" color="white" type="text" name="subject" />
-             
-      <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
-             Message
-            </PortfolioTextStandard>
-      <Textarea focusBorderColor="white" color="white" width="95%" name="html_message" />
-      <Button type="submit" />
-      </Box>
-    </form>
-                 
-                
-            <PortfolioTextStandard marginTop="2rem" marginLeft="2rem" width="30%" color="white">
-                * Every time you contact me I'll give my cat a treat ->
-            </PortfolioTextStandard>
+              </PortfolioTextStandard>
+              <Input focusBorderColor="white" color="white" type="text" name="subject" />
+              <PortfolioTextStandard marginLeft="2rem" width="12rem" color="white">
+                Message
+              </PortfolioTextStandard>
+              <Textarea focusBorderColor="white" color="white" width="95%" name="html_message" />
+              <Button fontFamily="Rocksalt" style={{backgroundColor: "rgb(0,0,0,0)", color: "white", marginTop: "1rem", borderWidth: "2px", borderColor: "white"}} type="submit" >Send</Button>
+            </Box>
+          </form>
+          <PortfolioTextStandard marginTop="1rem" marginLeft="2rem" width="30%" color="white">
+           * Every time you contact me I'll give my cat a treat ->
+          </PortfolioTextStandard>
         </Box>
       <Image position="fixed" right="-10%" bottom="0" src={PaperAndPenImage} />
     </Box>
