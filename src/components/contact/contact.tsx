@@ -1,4 +1,4 @@
-import { Box, Grid, HStack, Image, Input, Textarea, VStack } from "@chakra-ui/react";
+import { Box, Button, Grid, HStack, Image, Input, Textarea, VStack } from "@chakra-ui/react";
 import React from "react";
 import PaperAndPenImage from "../../images/louiblackandwhite.png";
 import BackgroundPhoto from "../../images/paintstrokebackgroundleft.webp";
@@ -13,7 +13,7 @@ const Contact: React.FC = (props) => {
     function sendEmail(e) {
         e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
     
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+        emailjs.sendForm('service_7cznn7c', 'template_ck8cdf7', e.target, 'JwrnauuumQQCCEDkG')
           .then((result) => {
               window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
           }, (error) => {
@@ -61,7 +61,7 @@ const Contact: React.FC = (props) => {
              Message
             </PortfolioTextStandard>
       <Textarea focusBorderColor="white" color="white" width="95%" name="html_message" />
-      {/* <Input type="submit" value="Send" /> */}
+      <Button type="submit" />
       </Box>
     </form>
                  
