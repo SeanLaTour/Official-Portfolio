@@ -9,8 +9,10 @@ import {
   PortfolioTextTitle,
 } from "../shared/portfolio_text";
 import { BiFileBlank } from "react-icons/bi";
+import { useState } from "react";
 
 const Projects: React.FC = (props) => {
+  const [toggleLaptopScreen, setToggleLaptopScreen] = useState(false);
   return (
     <Box>
       <Image
@@ -48,6 +50,39 @@ const Projects: React.FC = (props) => {
         width="50vw"
         display="flex"
       >
+        <Box
+          width="8rem"
+          height="12rem"
+          position="relative"
+          left="18%"
+          top="10%"
+          templateColumns="repeat(2, 1fr)"
+          gap={4}
+          display={toggleLaptopScreen ? "flex" : "none"}
+          flexDirection="column"
+        >
+          <Box display="flex" flexDirection="row">
+          <PortfolioTextStandard
+            onClick={() => setToggleLaptopScreen(false)}
+            fontFamily="Wallpoet"
+          >
+            {"<-"}
+          </PortfolioTextStandard>
+          <PortfolioTextStandard fontFamily="Wallpoet">
+            NESH: Visit
+          </PortfolioTextStandard>
+          <PortfolioTextStandard lineHeight="120%" fontFamily="Wallpoet">
+            Nesh is a mic to pdf guitar tabliture app.
+          </PortfolioTextStandard>
+          </Box>
+
+          <PortfolioTextStandard fontFamily="Wallpoet">
+            Tech:
+          </PortfolioTextStandard>
+          <PortfolioTextStandard fontFamily="Wallpoet">
+            React, WebAudioDaw, JavaScript, CSS
+          </PortfolioTextStandard>
+        </Box>
         <Grid
           width="8rem"
           height="12rem"
@@ -56,32 +91,53 @@ const Projects: React.FC = (props) => {
           top="10%"
           templateColumns="repeat(2, 1fr)"
           gap={4}
+          display={toggleLaptopScreen ? "none" : "grid"}
         >
-          <HStack>
+          <HStack
+            onClick={() => {
+              setToggleLaptopScreen(true);
+            }}
+          >
             <BiFileBlank />
             <PortfolioTextStandard fontFamily="Wallpoet">
               Nesh
             </PortfolioTextStandard>
           </HStack>
-          <HStack>
+          <HStack
+            onClick={() => {
+              setToggleLaptopScreen(true);
+            }}
+          >
             <BiFileBlank />
             <PortfolioTextStandard fontFamily="Wallpoet">
               Alaeris
             </PortfolioTextStandard>
           </HStack>
-          <HStack>
+          <HStack
+            onClick={() => {
+              setToggleLaptopScreen(true);
+            }}
+          >
             <BiFileBlank />
             <PortfolioTextStandard fontFamily="Wallpoet">
               Zipti
             </PortfolioTextStandard>
           </HStack>
-          <HStack>
+          <HStack
+            onClick={() => {
+              setToggleLaptopScreen(true);
+            }}
+          >
             <BiFileBlank />
             <PortfolioTextStandard fontFamily="Wallpoet">
               WWC
             </PortfolioTextStandard>
           </HStack>
-          <HStack>
+          <HStack
+            onClick={() => {
+              setToggleLaptopScreen(true);
+            }}
+          >
             <BiFileBlank />
             <PortfolioTextStandard fontFamily="Wallpoet">
               3D
