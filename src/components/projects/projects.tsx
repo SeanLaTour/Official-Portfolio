@@ -13,41 +13,51 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Projects: React.FC = (props) => {
-  const [selectedProject, setSelectedProject] = useState({})
+  const [selectedProject, setSelectedProject] = useState({});
   const [toggleLaptopScreen, setToggleLaptopScreen] = useState(false);
 
   const setProject = (e) => {
-    console.log(e.target.id)
+    console.log(e.target.id);
     switch (e.target.id) {
       case "Nesh":
-        return  setSelectedProject({title: "NESH",
-          description: "Nesh is a mic to pdf guitar tabliture app. It can listen to the acoustic tones of your guitar and translate it into PDFs while simutaniously allowing users to create and edit tabs from scratch. It was created using React, WebAudioDaw, and React-PDF.",
-          link: ""
-        })
-        case "Alaeris":
-          return  setSelectedProject({title: "Alaeris",
-            description: "",
-            link: ""
-          })
-          case "Zipti":
-            return  setSelectedProject({title: "",
-              description: "",
-              link: ""
-            })
-            case "WWC":
-              return  setSelectedProject({title: "",
-                description: "",
-                link: ""
-              })
-              case "3D":
-                return  setSelectedProject({title: "",
-                  description: "",
-                  link: ""
-                })
+        return setSelectedProject({
+          title: "Nesh",
+          description:
+            "Nesh is a mic to pdf guitar tabliture app I developed for myself in order to translate acoustic guitar into PDFs while simutaniously allowing for the creation and editing of tabs from scratch. It was created using React, WebAudioDaw, and React-PDF.",
+          link: "https://trusting-feynman-19add5.netlify.app/",
+        });
+      case "Alaeris":
+        return setSelectedProject({
+          title: "Alaeris",
+          description:
+            "Alaeris is the solution to CO2 emissions due to crypto. As lead fullstack developer on the Alaeris team I was charged with building and desiging our frontend and API. Alaeris was built with Gatsby, React, Chakra UI and FastAPI.",
+          link: "https://www.alaeris.com/",
+        });
+      case "Zipti":
+        return setSelectedProject({
+          title: "Zipti",
+          description:
+            "Zipti is the best way to connect to professionals via instagram. An MVP I developed working at WinningWithChase LLC, Zipti is a powerful video chat app that pays professionals to answer anyone's questions. Built with Gatsby, React, Chakra UI, Flask and Stripe integrations.",
+          link: "https://zipti.com/",
+        });
+      case "WWC":
+        return setSelectedProject({
+          title: "WWC",
+          description:
+            "As full stack developer at WinningWithChase I was tasked with building and maintaining the archetecture of our business landing page. The WWC Landing page was developed using Gatsby, React, and Chakra UI.",
+          link: "https://winningwithchase.com/",
+        });
+      case "3D":
+        return setSelectedProject({
+          title: "3D",
+          description:
+            "A personal project of mine, my 3D Portfolio illustrates a few of my talents regarding 3D rendering, animations and interactive web design. My 3D portflio was built using JavaScript and Three.js.",
+          link: "https://mystifying-turing-1f75d6.netlify.app/",
+        });
     }
-  }
+  };
 
-  useEffect(() =>{},[selectedProject])
+  useEffect(() => {}, [selectedProject]);
 
   return (
     <Box>
@@ -110,8 +120,13 @@ const Projects: React.FC = (props) => {
               fontFamily="Wallpoet"
             >
               {selectedProject.description}
-             </PortfolioTextStandard>
-            <PortfolioTextStandard fontFamily="Wallpoet">Visit: <a href={selectedProject.link} target="_blank">{selectedProject.title} -></a></PortfolioTextStandard>
+            </PortfolioTextStandard>
+            <PortfolioTextStandard fontFamily="Wallpoet">
+              Visit:{" "}
+              <a href={selectedProject.link} target="_blank">
+                {selectedProject.title}
+              </a>
+            </PortfolioTextStandard>
           </Box>
         </Box>
         <Box position="relative" left="0" top="22%">
@@ -128,28 +143,11 @@ const Projects: React.FC = (props) => {
           display={toggleLaptopScreen ? "none" : "grid"}
         >
           <HStack
-            id="Nesh"
+            id="Alaeris"
             onClick={(e) => {
-              setProject(e)
+              setProject(e);
               setToggleLaptopScreen(true);
-
-              console.log(selectedProject)
-            }}
-          >
-            <BiFileBlank />
-            <PortfolioTextStandard  id="Nesh"   fontFamily="Wallpoet">
-              Nesh
-            </PortfolioTextStandard>
-          </HStack>
-          <HStack id="Alaeris"
-                    onClick={(e) => {
-                      setProject(e)
-                      setToggleLaptopScreen(true);
-        
-                      console.log(selectedProject)
-                    }}
-            onClick={() => {
-              setToggleLaptopScreen(true);
+              console.log(selectedProject);
             }}
           >
             <BiFileBlank />
@@ -158,33 +156,56 @@ const Projects: React.FC = (props) => {
             </PortfolioTextStandard>
           </HStack>
           <HStack
-            onClick={() => {
+            id="Nesh"
+            onClick={(e) => {
+              setProject(e);
               setToggleLaptopScreen(true);
+
+              console.log(selectedProject);
             }}
           >
             <BiFileBlank />
-            <PortfolioTextStandard fontFamily="Wallpoet">
+            <PortfolioTextStandard id="Nesh" fontFamily="Wallpoet">
+              Nesh
+            </PortfolioTextStandard>
+          </HStack>
+          <HStack
+            id="Zipti"
+            onClick={(e) => {
+              setProject(e);
+              setToggleLaptopScreen(true);
+              console.log(selectedProject);
+            }}
+          >
+            <BiFileBlank />
+            <PortfolioTextStandard id="Zipti" fontFamily="Wallpoet">
               Zipti
             </PortfolioTextStandard>
           </HStack>
           <HStack
-            onClick={() => {
+            id="3D"
+            onClick={(e) => {
+              setProject(e);
               setToggleLaptopScreen(true);
+              console.log(selectedProject);
             }}
           >
             <BiFileBlank />
-            <PortfolioTextStandard fontFamily="Wallpoet">
-              WWC
+            <PortfolioTextStandard id="3D" fontFamily="Wallpoet">
+              3D
             </PortfolioTextStandard>
           </HStack>
           <HStack
-            onClick={() => {
+            id="WWC"
+            onClick={(e) => {
+              setProject(e);
               setToggleLaptopScreen(true);
+              console.log(selectedProject);
             }}
           >
             <BiFileBlank />
-            <PortfolioTextStandard fontFamily="Wallpoet">
-              3D
+            <PortfolioTextStandard id="WWC" fontFamily="Wallpoet">
+              WWC
             </PortfolioTextStandard>
           </HStack>
         </Grid>
