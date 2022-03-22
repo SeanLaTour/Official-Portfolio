@@ -26,12 +26,12 @@ const Contact: React.FC = (props) => {
       backgroundRepeat="no-repeat"
       backgroundPosition="-5rem"
       backgroundSize="auto 100%"
-      height="100vh"
+      height="100%"
       paddingTop="6rem"
       paddingLeft="2rem"
     >
-      <Box>
-        <PortfolioTextTitle marginLeft="2rem" paddingTop="0rem" color="white">
+      <Box width="80%">
+        <PortfolioTextTitle marginLeft="2rem" paddingTop="1.5rem" color="white">
           -Contact Me
         </PortfolioTextTitle>
           <form className="contact-form" onSubmit={sendEmail}>
@@ -59,7 +59,7 @@ const Contact: React.FC = (props) => {
            * Every time you contact me I'll give my cat a treat ->
           </PortfolioTextStandard>
         </Box>
-      <Image position="fixed" right="-10%" bottom="0" src={PaperAndPenImage} />
+      <Image position="fixed" width="60vw" right="-10%" bottom="0" src={PaperAndPenImage} />
     </Box>
   );
 };

@@ -97,8 +97,9 @@ const Projects: React.FC = (props) => {
         display="flex"
       >
         <Box
-          width="8rem"
-          height="12rem"
+          overflow="scroll"
+          width="33vw"
+          height="33vh"
           position="relative"
           left="18%"
           top="10%"
