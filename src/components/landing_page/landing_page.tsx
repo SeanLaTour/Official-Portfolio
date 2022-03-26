@@ -8,7 +8,7 @@ import {
 } from "../shared/portfolio_text";
 import { useTransition, animated } from "react-spring";
 import { useState } from "react";
-import Header from "../shared/header/header";
+import Header from "../shared/header/header_light";
 
 const LandingPage: React.FC = (props) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -30,11 +30,14 @@ const LandingPage: React.FC = (props) => {
     leave: { x: 0, y: 900, opacity: 0 },
   });
 
-
-
   return (
     <>
-      <Header isVisible={isVisible} setIsVisible={setIsVisible} />
+      <Header
+        page="/"
+        blackText={true}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
       <Box height="100vh" paddingTop="6rem" paddingLeft="2rem">
         {transitionPaint((style, item) =>
           item ? (

@@ -9,13 +9,16 @@ interface HeaderLightProps {
   setIsVisible: Function;
   isVisible: boolean;
   isProject?: string;
+  page: string;
+  blackText?: boolean;
 }
 
 const HeaderLight: React.FC<HeaderLightProps> = (props) => {
   const determineDuration = (isProject: string) => {
     return isProject ? 0 : 2000;
   };
-  const triggerExitAnimation = (url: string) => {
+  const triggerExitAnimation = (url: string, page: string) => {
+    if (page === url) return;
     props.setIsVisible(false);
     setTimeout(() => {
       navigate(url);
@@ -42,34 +45,37 @@ const HeaderLight: React.FC<HeaderLightProps> = (props) => {
             >
               <HStack>
                 <PortfolioTextNav
-                  color="white"
-                  onClick={() => triggerExitAnimation("/")}
+                  color={props.blackText ? "black" : "white"}
+                  onClick={() => triggerExitAnimation("/", props.page)}
                   paddingRight="2rem"
                 >
                   Home
                 </PortfolioTextNav>
                 <PortfolioTextNav
-                  color="white"
-                  onClick={() => triggerExitAnimation("/about")}
+                  color={props.blackText ? "black" : "white"}
+                  onClick={() => triggerExitAnimation("/about", props.page)}
                   paddingRight="2rem"
                 >
                   About
                 </PortfolioTextNav>
                 <PortfolioTextNav
-                  color="white"
-                  onClick={() => triggerExitAnimation("/projects")}
+                  color={props.blackText ? "black" : "white"}
+                  onClick={() => triggerExitAnimation("/projects", props.page)}
                   paddingRight="2rem"
                 >
                   Projects
                 </PortfolioTextNav>
                 <PortfolioTextNav
-                  color="white"
-                  onClick={() => triggerExitAnimation("/contact")}
+                  color={props.blackText ? "black" : "white"}
+                  onClick={() => triggerExitAnimation("/contact", props.page)}
                   paddingRight="2rem"
                 >
                   Contact
                 </PortfolioTextNav>
-                <PortfolioTextNav color="white" paddingRight="2rem">
+                <PortfolioTextNav
+                  color={props.blackText ? "black" : "white"}
+                  paddingRight="2rem"
+                >
                   Music
                 </PortfolioTextNav>
               </HStack>

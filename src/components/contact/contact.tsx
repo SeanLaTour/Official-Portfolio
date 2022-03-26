@@ -31,7 +31,7 @@ const Contact: React.FC = (props) => {
 
   return (
     <>
-    <HeaderLight isVisible={isVisible} setIsVisible={setIsVisible} />
+    <HeaderLight page="/contact" isVisible={isVisible} setIsVisible={setIsVisible} />
     {transitionLeftSide((style, item) => item ? <animated.div style={style} className="item">
     <Box
       backgroundImage={BackgroundPhoto}

@@ -18,10 +18,13 @@ const About: React.FC = (props) => {
     leave: { x: -400, y: 0, opacity: 0 },
   });
 
-
   return (
     <>
-      <HeaderLight setIsVisible={setIsVisible} isVisible={isVisible} />
+      <HeaderLight
+        page="/about"
+        setIsVisible={setIsVisible}
+        isVisible={isVisible}
+      />
       {transitionPhoto((style, item) =>
         item ? (
           <animated.div style={style} className="item">
