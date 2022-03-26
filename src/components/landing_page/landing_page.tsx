@@ -11,7 +11,7 @@ import { useState } from "react";
 import Header from "../shared/header/header";
 
 const LandingPage: React.FC = (props) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const transitionPaint = useTransition(isVisible, {
     from: { x: -400, y: 0, opacity: 0 },
     enter: { x: 0, y: 0, opacity: 1 },
@@ -30,11 +30,7 @@ const LandingPage: React.FC = (props) => {
     leave: { x: 0, y: 900, opacity: 0 },
   });
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsVisible(true);
-    }, 300);
-  });
+
 
   return (
     <>

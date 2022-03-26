@@ -29,12 +29,6 @@ const Contact: React.FC = (props) => {
         leave: { x: -400, y: 0, opacity: 0 },
       });
 
-      useEffect(() => {
-        setTimeout(() => {
-          setIsVisible(true);
-        }, 300);
-      });
-
   return (
     <>
     <HeaderLight isVisible={isVisible} setIsVisible={setIsVisible} />

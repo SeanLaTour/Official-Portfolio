@@ -13,6 +13,7 @@ import { BiFileBlank } from "react-icons/bi";
 import { useState } from "react";
 import { useEffect } from "react";
 import HeaderLight from "../../components/shared/header/header_light";
+import TypeWriter from 'typewriter-effect';
 
 const Projects: React.FC = (props) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -71,11 +72,6 @@ const Projects: React.FC = (props) => {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsVisible(true);
-    }, 300);
-  });
 
   useEffect(() => {}, [selectedProject]);
 
@@ -132,6 +128,8 @@ const Projects: React.FC = (props) => {
               width="50vw"
               display="flex"
             >
+         
+
               <Box
                 overflow="scroll"
                 width="33vw"
@@ -156,7 +154,8 @@ const Projects: React.FC = (props) => {
                     lineHeight="120%"
                     fontFamily="Wallpoet"
                   >
-                    {selectedProject.description}
+                         <TypeWriter onInit={(typewriter) => typewriter.typeString(selectedProject.description).start()} />
+                    
                   </PortfolioTextStandard>
                   <PortfolioTextStandard fontFamily="Wallpoet">
                     Visit:{" "}
