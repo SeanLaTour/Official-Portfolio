@@ -1,5 +1,5 @@
 import { Box, Button, Grid, HStack, Image, Input, Textarea, VStack } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PaperAndPenImage from "../../images/louiblackandwhite.png";
 import BackgroundPhoto from "../../images/paintstrokebackgroundleft.webp";
 import {
@@ -8,19 +8,37 @@ import {
   PortfolioTextTitle,
 } from "../shared/portfolio_text";
 import emailjs from 'emailjs-com';
+import HeaderLight from "../../components/shared/header/header_light";
+import { useTransition, animated } from "react-spring";
  
 const Contact: React.FC = (props) => {
+  const [isVisible, setIsVisible] = useState(true);
     function sendEmail(e) {
-        e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
-    
+        e.preventDefault(); 
         emailjs.sendForm('service_7cznn7c', 'template_ck8cdf7', e.target, 'JwrnauuumQQCCEDkG')
           .then((result) => {
-              window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
-          }, (error) => {
-              console.log(error.text);
-          });
+            window.location.reload() 
+           }, (error) => {
+         console.log(error.text);
+        });
       }
+
+      const transitionLeftSide = useTransition(isVisible, {
+        from: { x: -400, y: 0, opacity: 0 },
+        enter: { x: 0, y: 0, opacity: 1 },
+        leave: { x: -400, y: 0, opacity: 0 },
+      });
+
+      useEffect(() => {
+        setTimeout(() => {
+          setIsVisible(true);
+        }, 300);
+      });
+
   return (
+    <>
+    <HeaderLight isVisible={isVisible} setIsVisible={setIsVisible} />
+    {transitionLeftSide((style, item) => item ? <animated.div style={style} className="item">
     <Box
       backgroundImage={BackgroundPhoto}
       backgroundRepeat="no-repeat"
@@ -61,6 +79,9 @@ const Contact: React.FC = (props) => {
         </Box>
       <Image position="fixed" width="60vw" right="-10%" bottom="0" src={PaperAndPenImage} />
     </Box>
+    </animated.div> : '') }
+
+    </>
   );
 };
 

@@ -8,9 +8,13 @@ interface HeaderLightProps {
   children?: React.ReactNode;
   setIsVisible: Function;
   isVisible: boolean;
+  isProject?: string;
 }
 
 const HeaderLight: React.FC<HeaderLightProps> = (props) => {
+  const determineDuration = (isProject: string) => {
+    return isProject ? 0 : 2000;
+  };
   const triggerExitAnimation = (url: string) => {
     props.setIsVisible(false);
     setTimeout(() => {
@@ -21,16 +25,16 @@ const HeaderLight: React.FC<HeaderLightProps> = (props) => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { duration: 2000 },
+    config: { duration: determineDuration(props.isProject) },
   });
-
+  console.log(props.isVisible);
   return (
     <>
       {transitionHeaderLight((style, item) =>
-        props.isVisible ? (
+        item ? (
           <animated.div style={style} className="item">
             <Box
-              zIndex="2"
+              zIndex="99"
               width="100%"
               backgroundImage={`linear-gradient(to bottom, rgb(0,0,0, 1) 0%, rgb(275,275,275, 0) 10%)`}
               position="fixed"

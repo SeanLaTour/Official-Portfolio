@@ -3,6 +3,7 @@ import { Box, Grid, HStack, Image } from "@chakra-ui/react";
 import React from "react";
 import ProjectPortfolioPhoto from "../../images/projectsphoto.png";
 import BackgroundTop from "../../images/paintstrokebackgroundleft.webp";
+import { useTransition, animated } from "react-spring";
 import {
   PortfolioTextStandard,
   PortfolioTextSubTitle,
@@ -11,8 +12,21 @@ import {
 import { BiFileBlank } from "react-icons/bi";
 import { useState } from "react";
 import { useEffect } from "react";
+import HeaderLight from "../../components/shared/header/header_light";
 
 const Projects: React.FC = (props) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const transitionTopBanner = useTransition(isVisible, {
+    from: { x: 0, y: -400, opacity: 0 },
+    enter: { x: 0, y: -325, opacity: 1 },
+    leave: { x: 0, y: -400, opacity: 0 },
+  });
+  const transitionBottom = useTransition(isVisible, {
+    from: { y: 0, opacity: 0 },
+    enter: { y: 0, opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 200 },
+  });
   const [selectedProject, setSelectedProject] = useState({});
   const [toggleLaptopScreen, setToggleLaptopScreen] = useState(false);
 
@@ -57,160 +71,187 @@ const Projects: React.FC = (props) => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 300);
+  });
+
   useEffect(() => {}, [selectedProject]);
 
   return (
     <Box>
-      <Image
-        transform={"rotate(45deg)"}
-        position="fixed"
-        left="-35%"
-        top="-50%"
-        width="140vw"
-        src={BackgroundTop}
+      <HeaderLight
+        isProject="project"
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
       />
-      <Image
-        transform={"rotate(60deg)"}
-        position="fixed"
-        right="-30%"
-        top="-56%"
-        width="140vw"
-        src={BackgroundTop}
-      />
-      <Image
-        position="fixed"
-        left="-7.5vw"
-        bottom="0"
-        width="65vw"
-        src={ProjectPortfolioPhoto}
-      />
-      <Box
-        position="fixed"
-        right="6vw"
-        bottom="0"
-        backgroundImage={BackgroundImage}
-        backgroundRepeat="no-repeat"
-        backgroundPosition="center"
-        backgroundSize="100% 100%"
-        height="60vh"
-        width="50vw"
-        display="flex"
-      >
-        <Box
-          overflow="scroll"
-          width="33vw"
-          height="33vh"
-          position="relative"
-          left="18%"
-          top="10%"
-          templateColumns="repeat(2, 1fr)"
-          gap={4}
-          display={toggleLaptopScreen ? "flex" : "none"}
-          flexDirection="column"
-        >
-          <Box display="flex" flexDirection="column">
-            <PortfolioTextStandard
-              onClick={() => setToggleLaptopScreen(false)}
-              fontFamily="Wallpoet"
+      {transitionTopBanner((style, item) =>
+        item ? (
+          <animated.div style={style} className="item">
+            <Image
+              transform={"rotate(45deg)"}
+              position="fixed"
+              left="-35%"
+              top="-50%"
+              width="140vw"
+              src={BackgroundTop}
+            />
+            <Image
+              transform={"rotate(60deg)"}
+              position="fixed"
+              right="-30%"
+              top="-56%"
+              width="140vw"
+              src={BackgroundTop}
+            />
+          </animated.div>
+        ) : (
+          ""
+        )
+      )}
+      {transitionBottom((style, item) =>
+        item ? (
+          <animated.div style={style} className="item">
+            <Image
+              position="fixed"
+              left="-7.5vw"
+              bottom="0"
+              width="65vw"
+              src={ProjectPortfolioPhoto}
+            />
+            <Box
+              position="fixed"
+              right="6vw"
+              bottom="0"
+              backgroundImage={BackgroundImage}
+              backgroundRepeat="no-repeat"
+              backgroundPosition="center"
+              backgroundSize="100% 100%"
+              height="60vh"
+              width="50vw"
+              display="flex"
             >
-              {"<-"} {selectedProject.title}:
-            </PortfolioTextStandard>
-            <PortfolioTextStandard
-              width="33vw"
-              lineHeight="120%"
-              fontFamily="Wallpoet"
-            >
-              {selectedProject.description}
-            </PortfolioTextStandard>
-            <PortfolioTextStandard fontFamily="Wallpoet">
-              Visit:{" "}
-              <a href={selectedProject.link} target="_blank">
-                {selectedProject.title}
-              </a>
-            </PortfolioTextStandard>
-          </Box>
-        </Box>
-        <Box position="relative" left="0" top="22%">
-          {" "}
-        </Box>
-        <Grid
-          width="8rem"
-          height="12rem"
-          position="relative"
-          left="18%"
-          top="10%"
-          templateColumns="repeat(2, 1fr)"
-          gap={4}
-          display={toggleLaptopScreen ? "none" : "grid"}
-        >
-          <HStack
-            id="Alaeris"
-            onClick={(e) => {
-              setProject(e);
-              setToggleLaptopScreen(true);
-              console.log(selectedProject);
-            }}
-          >
-            <BiFileBlank />
-            <PortfolioTextStandard id="Alaeris" fontFamily="Wallpoet">
-              Alaeris
-            </PortfolioTextStandard>
-          </HStack>
-          <HStack
-            id="Nesh"
-            onClick={(e) => {
-              setProject(e);
-              setToggleLaptopScreen(true);
+              <Box
+                overflow="scroll"
+                width="33vw"
+                height="33vh"
+                position="relative"
+                left="18%"
+                top="10%"
+                templateColumns="repeat(2, 1fr)"
+                gap={4}
+                display={toggleLaptopScreen ? "flex" : "none"}
+                flexDirection="column"
+              >
+                <Box display="flex" flexDirection="column">
+                  <PortfolioTextStandard
+                    onClick={() => setToggleLaptopScreen(false)}
+                    fontFamily="Wallpoet"
+                  >
+                    {"<-"} {selectedProject.title}:
+                  </PortfolioTextStandard>
+                  <PortfolioTextStandard
+                    width="33vw"
+                    lineHeight="120%"
+                    fontFamily="Wallpoet"
+                  >
+                    {selectedProject.description}
+                  </PortfolioTextStandard>
+                  <PortfolioTextStandard fontFamily="Wallpoet">
+                    Visit:{" "}
+                    <a href={selectedProject.link} target="_blank">
+                      {selectedProject.title}
+                    </a>
+                  </PortfolioTextStandard>
+                </Box>
+              </Box>
+              <Box position="relative" left="0" top="22%">
+                {" "}
+              </Box>
+              <Grid
+                width="8rem"
+                height="12rem"
+                position="relative"
+                left="18%"
+                top="10%"
+                templateColumns="repeat(2, 1fr)"
+                gap={4}
+                display={toggleLaptopScreen ? "none" : "grid"}
+              >
+                <HStack
+                  id="Alaeris"
+                  onClick={(e) => {
+                    setProject(e);
+                    setToggleLaptopScreen(true);
+                    console.log(selectedProject);
+                  }}
+                >
+                  <BiFileBlank />
+                  <PortfolioTextStandard id="Alaeris" fontFamily="Wallpoet">
+                    Alaeris
+                  </PortfolioTextStandard>
+                </HStack>
+                <HStack
+                  id="Nesh"
+                  onClick={(e) => {
+                    setProject(e);
+                    setToggleLaptopScreen(true);
 
-              console.log(selectedProject);
-            }}
-          >
-            <BiFileBlank />
-            <PortfolioTextStandard id="Nesh" fontFamily="Wallpoet">
-              Nesh
-            </PortfolioTextStandard>
-          </HStack>
-          <HStack
-            id="Zipti"
-            onClick={(e) => {
-              setProject(e);
-              setToggleLaptopScreen(true);
-              console.log(selectedProject);
-            }}
-          >
-            <BiFileBlank />
-            <PortfolioTextStandard id="Zipti" fontFamily="Wallpoet">
-              Zipti
-            </PortfolioTextStandard>
-          </HStack>
-          <HStack
-            id="3D"
-            onClick={(e) => {
-              setProject(e);
-              setToggleLaptopScreen(true);
-              console.log(selectedProject);
-            }}
-          >
-            <BiFileBlank />
-            <PortfolioTextStandard id="3D" fontFamily="Wallpoet">
-              3D
-            </PortfolioTextStandard>
-          </HStack>
-          <HStack
-            id="WWC"
-            onClick={(e) => {
-              setProject(e);
-              setToggleLaptopScreen(true);
-              console.log(selectedProject);
-            }}
-          >
-            <BiFileBlank />
-            <PortfolioTextStandard id="WWC" fontFamily="Wallpoet">
-              WWC
-            </PortfolioTextStandard>
-          </HStack>
-        </Grid>
-      </Box>
+                    console.log(selectedProject);
+                  }}
+                >
+                  <BiFileBlank />
+                  <PortfolioTextStandard id="Nesh" fontFamily="Wallpoet">
+                    Nesh
+                  </PortfolioTextStandard>
+                </HStack>
+                <HStack
+                  id="Zipti"
+                  onClick={(e) => {
+                    setProject(e);
+                    setToggleLaptopScreen(true);
+                    console.log(selectedProject);
+                  }}
+                >
+                  <BiFileBlank />
+                  <PortfolioTextStandard id="Zipti" fontFamily="Wallpoet">
+                    Zipti
+                  </PortfolioTextStandard>
+                </HStack>
+                <HStack
+                  id="3D"
+                  onClick={(e) => {
+                    setProject(e);
+                    setToggleLaptopScreen(true);
+                    console.log(selectedProject);
+                  }}
+                >
+                  <BiFileBlank />
+                  <PortfolioTextStandard id="3D" fontFamily="Wallpoet">
+                    3D
+                  </PortfolioTextStandard>
+                </HStack>
+                <HStack
+                  id="WWC"
+                  onClick={(e) => {
+                    setProject(e);
+                    setToggleLaptopScreen(true);
+                    console.log(selectedProject);
+                  }}
+                >
+                  <BiFileBlank />
+                  <PortfolioTextStandard id="WWC" fontFamily="Wallpoet">
+                    WWC
+                  </PortfolioTextStandard>
+                </HStack>
+              </Grid>
+            </Box>
+          </animated.div>
+        ) : (
+          ""
+        )
+      )}
     </Box>
   );
 };
